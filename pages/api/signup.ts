@@ -1,22 +1,22 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { withIronSessionApiRoute } from "iron-session/next";
-import ironConfig from "../../util/iron-config";
 
-export default withIronSessionApiRoute(login, ironConfig);
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  try {
+    const response = await fetch(`${process.env.API_ROUTE}/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(req.body),
+    });
 
-async function signup(req: NextApiRequest, res: NextApiResponse) {}
+    const data = await response.json();
 
-async function login(req: NextApiRequest, res: NextApiResponse) {
-  const { username, password } = req.body;
-
-  const user = { id: 1, name: "User" };
-
-  if (username === "teste@teste.com" && password === "123456") {
-    req.session.user = user;
-
-    await req.session.save();
-    return res.status(200).json(user);
+    return res.status(200).json(data);
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
   }
-
-  return res.status(401).json({ message: "Unauthenticated" });
 }

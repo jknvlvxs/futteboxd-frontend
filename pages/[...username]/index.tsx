@@ -1,19 +1,22 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import Header from "../components/Header";
-import Landing from "../components/Landing";
-import Features from "../components/Features";
-import Demo from "../components/Demo";
-import Pricing from "../components/Pricing";
-import Testimonies from "../components/Testimonies";
-import Action from "../components/Action";
-import Footer from "../components/Footer";
-import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-// import jwt from "jsonwebtoken";
+import { useCookies } from "react-cookie";
+import Action from "../../components/Action";
+import Demo from "../../components/Demo";
+import Features from "../../components/Features";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Landing from "../../components/Landing";
+import Pricing from "../../components/Pricing";
+import Testimonies from "../../components/Testimonies";
+import { Profile } from "../../types/profile.types";
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   const [cookies, setCookies] = useCookies(["token"]);
   const [user, setUser] = useState(null);
 
@@ -27,10 +30,24 @@ const Home: NextPage = () => {
     }
   }, []);
 
+  const [profile, setProfile] = useState<Profile | null>(null);
+
+  useEffect(() => {
+    if (!router.query.username) return;
+    const profile: Profile = {
+      email: "sada@asda,com",
+      username: router.query.username as string,
+    };
+
+    setProfile(profile);
+  }, [router.query.username]);
+
+  if (!profile) return <p>Usuário não encontrado</p>;
+
   return (
     <>
       <Head>
-        <title>Futteboxd • Social football discovery.</title>
+        <title>{`${profile.username}'s profile • Futteboxd`}</title>
         <meta content="Example" name="description" />
         <meta property="og:url" content="example.com" />
         <meta property="og:description" content="Example" />

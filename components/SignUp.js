@@ -2,6 +2,11 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import BasicInput from "./BasicInput";
+import { useRouter } from "next/router";
+import { useCookies } from "react-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import toastConfig from "../util/toast.config";
+import cookiesConfig from "../util/cookies.config";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
@@ -19,9 +24,34 @@ const SignupSchema = Yup.object().shape({
 });
 
 export default function SignUp() {
+  const router = useRouter();
+  const [cookies, setCookies] = useCookies(["token"]);
+
+  const onSubmit = async (values, actions) => {
+    const response = await fetch("/api/signup", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      console.error(`Ocorreu um erro: ${data.message}`);
+      actions.setErrors(data.error);
+      toast.error(`${data.message}`, toastConfig);
+    } else {
+      setCookies("token", data.access_token, cookiesConfig);
+      actions.resetForm();
+      router.push("/");
+    }
+  };
+
   return (
     <section>
-      <div className="max-w-3xl mx-8 md:mx-auto">
+      <div className="max-w-1xl mx-8 md:mx-auto">
         <div className="my-20 space-y-10 text-center sm:my-16 md:space-y-14">
           <div className="space-y-5 md:space-y-8">
             <h1 className="text-3xl font-semibold text-white sm:text-5xl md:text-6xl md:text-gray-800">
@@ -42,10 +72,7 @@ export default function SignUp() {
             validationSchema={SignupSchema}
             validateOnChange={false}
             validateOnBlur={false}
-            onSubmit={(values) => {
-              // same shape as initial values
-              console.log(values);
-            }}
+            onSubmit={onSubmit}
           >
             {({ errors, touched }) => (
               <Form>
