@@ -1,12 +1,11 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
-import * as Yup from "yup";
-import BasicInput from "./BasicInput";
+import { Field, Form, Formik } from "formik";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
-import { ToastContainer, toast } from "react-toastify";
-import toastConfig from "../util/toast.config";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
 import cookiesConfig from "../util/cookies.config";
+import toastConfig from "../util/toast.config";
+import BasicInput from "./BasicInput";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
