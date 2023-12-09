@@ -7,7 +7,7 @@ import Background from "../../components/Background";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
-import Profile from "../../components/Profile";
+import { Profile } from "../../components/Profile";
 import MyProfile from "../../components/MyProfile";
 import { useAuth } from "../../context/AuthContext";
 import { Profile as ProfileModel } from "../../types/profile.types";

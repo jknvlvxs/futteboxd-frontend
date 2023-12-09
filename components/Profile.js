@@ -1,5 +1,5 @@
-export default function Profile(props) {
-  const { profile, followProfile } = props;
+export function DefaultProfile(props) {
+  const { profile, children } = props;
 
   return (
     <>
@@ -59,16 +59,35 @@ export default function Profile(props) {
                   Melbourne-raised, Brooklyn-based Nick Murphy writes, performs
                   and records all of his own music, giving it a warm.
                 </p>
-                <a
-                  onClick={() => followProfile(profile.username)}
-                  className="font-normal text-slate-700 hover:text-slate-400 hover:cursor-pointer"
-                  children="Seguir"
-                />
               </div>
+            </div>
+          </div>
+          <div className="mt-6 py-6 border-t border-slate-200 text-center">
+            <div className="flex flex-wrap justify-center">
+              <div className="w-full px-4">{children}</div>
             </div>
           </div>
         </div>
       </div>
     </>
+  );
+}
+
+export function Profile(props) {
+  const { profile, followProfile } = props;
+
+  return (
+    <DefaultProfile
+      profile={profile}
+      children={
+        <>
+          <a
+            onClick={() => followProfile(profile.username)}
+            className="font-normal text-slate-700 hover:text-slate-400 hover:cursor-pointer"
+            children="Seguir"
+          />
+        </>
+      }
+    />
   );
 }
