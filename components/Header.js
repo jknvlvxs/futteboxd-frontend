@@ -85,7 +85,7 @@ export default function Header(props) {
                     >
                       <img
                         src={user.avatar}
-                        class="w-8 rounded-full"
+                        className="w-8 rounded-full"
                         alt="Avatar"
                       />
                       {user.username}

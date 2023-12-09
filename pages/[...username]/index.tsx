@@ -10,6 +10,10 @@ import Loading from "../../components/Loading";
 import Profile from "../../components/Profile";
 import { Profile as ProfileModel } from "../../types/profile.types";
 import { User } from "../../types/user.types";
+import { toast } from "react-toastify";
+import * as Yup from "yup";
+import cookiesConfig from "../../util/cookies.config";
+import toastConfig from "../../util/toast.config";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -29,14 +33,26 @@ const Home: NextPage = () => {
 
   const [profile, setProfile] = useState<ProfileModel>();
 
-  useEffect(() => {
-    if (!router.query.username) return;
-    const profile: ProfileModel = {
-      email: "sada@asda,com",
-      username: router.query.username as string,
-    };
+  const fetchProfile = async () => {
+    const response = await fetch(`/api/profile/${router.query.username}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    setProfile(profile);
+    const data = await response.json();
+
+    if (data.error) {
+      console.error(`Ocorreu um erro: ${data.message}`);
+      toast.error(`${data.message}`, toastConfig as any);
+    } else {
+      setProfile(data);
+    }
+  };
+
+  useEffect(() => {
+    if (!!router.query.username) fetchProfile();
   }, [router.query.username]);
 
   return (
@@ -59,7 +75,7 @@ const Home: NextPage = () => {
         {!!profile && !!user && profile.username === user.username && (
           <Profile profile={profile} />
         )}
-        {(!!profile || !!user) && <Loading />}
+        {(!profile || !user) && <Loading />}
         <Footer />
       </div>
     </>
