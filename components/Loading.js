@@ -2,7 +2,7 @@ import React from "react";
 import ReactLoading from "react-loading";
 
 export default function Loading({
-  type = "bars",
+  type = "balls",
   height = 667,
   width = 375,
   color = "#fff",
