@@ -1,8 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { Fragment, useRef } from "react";
+import { useCookies } from "react-cookie";
 import * as Yup from "yup";
 import BasicInput from "./BasicInput";
+import cookiesConfig from "../util/cookies.config";
+import toastConfig from "../util/toast.config";
+import { toast } from "react-toastify";
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string().trim().required("Campo obrigatório"),
@@ -13,6 +17,7 @@ export default function Login(props) {
   const { open, setOpen } = props;
 
   const cancelButtonRef = useRef(null);
+  const [cookies, setCookies] = useCookies(["token"]);
 
   const onSubmit = async (values, actions) => {
     const response = await fetch("/api/login", {
@@ -25,14 +30,13 @@ export default function Login(props) {
 
     const data = await response.json();
 
-    console.log(data);
-
     if (data.error) {
-      console.error(`Ocorreu um erro: ${data.message}`);
       actions.setErrors(data.error);
       toast.error(`${data.message}`, toastConfig);
     } else {
-      alert("Logado com sucesso!");
+      setCookies("token", data.access_token, cookiesConfig);
+      actions.resetForm();
+      router.push("/");
     }
   };
 
@@ -121,7 +125,7 @@ export default function Login(props) {
                               Não possui uma conta?{" "}
                               <a
                                 className="text-red-600 hover:underline hover:underline-offset-4"
-                                href="#"
+                                href="register"
                               >
                                 Cadastre-se
                               </a>

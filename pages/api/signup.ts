@@ -7,6 +7,7 @@ export default async function handler(
   try {
     const response = await fetch(`${process.env.API_ROUTE}/auth/register`, {
       method: "POST",
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },

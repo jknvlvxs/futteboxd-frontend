@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-
 import Header from "../components/Header";
 import Landing from "../components/Landing";
 import Features from "../components/Features";
@@ -11,6 +10,7 @@ import Action from "../components/Action";
 import Footer from "../components/Footer";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
+import Background from "../components/Background";
 // import jwt from "jsonwebtoken";
 
 const Home: NextPage = () => {
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const jwtToken = cookies.token;
-    if (jwtToken) {
+    if (jwtToken && jwtToken !== "undefined") {
       const base64Url = jwtToken.split(".")[1];
       const base64 = base64Url.replace("-", "+").replace("_", "/");
       const decodedToken = JSON.parse(window.atob(base64));
@@ -39,13 +39,7 @@ const Home: NextPage = () => {
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <div className="h-full leading-normal text-gray-600">
-        <div
-          className="absolute top-0 left-0 right-0 bg-no-repeat bg-cover shadow-lg -bottom-full brightness-90 filter md:bottom-0 md:bg-center md:brightness-100"
-          style={{
-            backgroundImage: "url('images/splash.jpeg')",
-            zIndex: -1,
-          }}
-        />
+        <Background />
         <Header user={user} />
         <Landing />
         <Features />
