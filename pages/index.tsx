@@ -1,31 +1,18 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Action from "../components/Action";
+import Background from "../components/Background";
+import Demo from "../components/Demo";
+import Features from "../components/Features";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Landing from "../components/Landing";
-import Features from "../components/Features";
-import Demo from "../components/Demo";
 import Pricing from "../components/Pricing";
 import Testimonies from "../components/Testimonies";
-import Action from "../components/Action";
-import Footer from "../components/Footer";
-import { useCookies } from "react-cookie";
-import { useEffect, useState } from "react";
-import Background from "../components/Background";
-// import jwt from "jsonwebtoken";
+import { useAuth } from "../context/AuthContext";
 
 const Home: NextPage = () => {
-  const [cookies, setCookies] = useCookies(["token"]);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const jwtToken = cookies.token;
-    if (jwtToken && jwtToken !== "undefined") {
-      const base64Url = jwtToken.split(".")[1];
-      const base64 = base64Url.replace("-", "+").replace("_", "/");
-      const decodedToken = JSON.parse(window.atob(base64));
-      setUser(decodedToken);
-    }
-  }, []);
+  const { user } = useAuth();
 
   return (
     <>

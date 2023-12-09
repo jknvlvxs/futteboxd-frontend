@@ -36,7 +36,7 @@ export default function Login(props) {
     } else {
       setCookies("token", data.access_token, cookiesConfig);
       actions.resetForm();
-      router.push("/");
+      window.location.reload();
     }
   };
 

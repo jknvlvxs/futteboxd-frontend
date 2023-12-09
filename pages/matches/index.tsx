@@ -14,25 +14,13 @@ import Testimonies from "../../components/Testimonies";
 import { User } from "../../types/user.types";
 import { useRouter } from "next/router";
 import { Profile } from "../../types/profile.types";
+import { useAuth } from "../../context/AuthContext";
+import Background from "../../components/Background";
 // import jwt from "jsonwebtoken";
 
 const Home: NextPage = () => {
   const router = useRouter();
-
-  const [cookies, setCookies] = useCookies(["token"]);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const jwtToken = cookies.token;
-    // decode jwt token, if valid, set user, else redirect to login
-    if (jwtToken) {
-      const base64Url = jwtToken.split(".")[1];
-      const base64 = base64Url.replace("-", "+").replace("_", "/");
-      const decodedToken = JSON.parse(window.atob(base64));
-      console.log(decodedToken);
-      setUser(decodedToken);
-    }
-  }, []);
+  const { user } = useAuth();
 
   const [username, setUsername] = useState<string>(
     router.query.username as string
@@ -61,13 +49,7 @@ const Home: NextPage = () => {
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <div className="h-full leading-normal text-gray-600">
-        <div
-          className="absolute top-0 left-0 right-0 bg-no-repeat bg-cover shadow-lg -bottom-full brightness-90 filter md:bottom-0 md:bg-center md:brightness-100"
-          style={{
-            backgroundImage: "url('images/splash.jpeg')",
-            zIndex: -1,
-          }}
-        />
+        <Background />
         <Header user={user} />
         <Landing />
         <Features />

@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Login from "./Login";
 
 export default function Header(props) {
-  const { user } = props;
+  const { user, handleOpenModal } = props;
 
   const [open, setOpen] = useState(false);
 
   const handleOpenLogin = (state) => {
     setOpen(state);
   };
+
+  useEffect(() => {
+    if (handleOpenModal == true) {
+      setOpen(true);
+    }
+  }, [handleOpenModal]);
 
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (

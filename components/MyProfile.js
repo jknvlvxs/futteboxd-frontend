@@ -1,5 +1,5 @@
-export default function Profile(props) {
-  const { profile, followProfile } = props;
+export default function MyProfile(props) {
+  const { profile, signOut } = props;
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function Profile(props) {
             <h3 className="text-2xl text-slate-700 font-bold leading-normal mb-1">
               {profile.name}
             </h3>
-            <div className="text-center text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
+            <div className="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
               <i className="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75">
                 {profile.username}
               </i>
@@ -59,11 +59,13 @@ export default function Profile(props) {
                   Melbourne-raised, Brooklyn-based Nick Murphy writes, performs
                   and records all of his own music, giving it a warm.
                 </p>
-                <a
-                  onClick={() => followProfile(profile.username)}
-                  className="font-normal text-slate-700 hover:text-slate-400 hover:cursor-pointer"
-                  children="Seguir"
-                />
+                <div className="flex justify-center py-4 lg:pt-4 pt-8">
+                  <a
+                    onClick={signOut}
+                    className="font-normal text-red-700 hover:text-red-400 hover:cursor-pointer"
+                    children="Sign Out"
+                  />
+                </div>
               </div>
             </div>
           </div>
