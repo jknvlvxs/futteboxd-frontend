@@ -6,22 +6,16 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 mb-20 md:gap-28 md:grid-cols-4">
             <ul className="space-y-1.5">
               <li className="mb-4 font-semibold text-white uppercase">
-                Uranium
+                Futteboxd
               </li>
               <li>
-                <a href="#">About</a>
+                <a href="/about">Sobre</a>
               </li>
               <li>
-                <a href="#">Team</a>
+                <a href="/members">Membros</a>
               </li>
               <li>
-                <a href="#">Careers</a>
-              </li>
-              <li>
-                <a href="#pricing">Pricing</a>
-              </li>
-              <li>
-                <a href="#">Blog</a>
+                <a href="/matches">Partidas</a>
               </li>
             </ul>
             <ul className="space-y-1.5">
@@ -46,7 +40,7 @@ export default function Footer() {
                 Support
               </li>
               <li>
-                <a href="#">Contact Us</a>
+                <a href="#">Contato</a>
               </li>
               <li>
                 <a href="#">Twitter</a>
@@ -60,32 +54,33 @@ export default function Footer() {
             </ul>
             <ul className="space-y-1.5">
               <li className="mb-4 font-semibold text-white uppercase">
-                Resources
+                Recursos
+              </li>
+              <li>
+                <a href="https://github.com/jknvlvxs/futteboxd-frontend">
+                  Repositório
+                </a>
               </li>
               <li>
                 <a href="#">Developer API</a>
               </li>
               <li>
-                <a href="#">Help Center</a>
+                <a href="#">Ajuda</a>
               </li>
               <li>
-                <a href="#">FAQ</a>
-              </li>
-              <li>
-                <a href="#">Security</a>
+                <a href="#">Segurança</a>
               </li>
             </ul>
           </div>
         </div>
         <p className="-mt-8 text-center text-gray-300">
-          Made with ♡ by{' '}
+          Feito por{" "}
           <a
-            href="https://saurish.com/?utm_source=uranium"
+            href="https://github.com/jknvlvxs"
             className="underline"
-          >
-            Saurish
-          </a>
-          . &copy; Uranium 2022. All rights reserved.
+            children="jknvlvxs"
+          />
+          . &copy; Futteboxd 2023.
         </p>
       </div>
     </footer>

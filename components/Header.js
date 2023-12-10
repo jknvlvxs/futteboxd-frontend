@@ -69,9 +69,9 @@ export default function Header(props) {
                 </li>
                 <li>
                   <a
-                    href="#testimonies"
+                    href="/members"
                     className="text-lg text-white md:text-black hover:text-gray-300 md:hover:text-gray-700"
-                    children="Usuários"
+                    children="Membros"
                   />
                 </li>
                 {/* <li>

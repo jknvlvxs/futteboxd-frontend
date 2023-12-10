@@ -4,7 +4,7 @@ export default function Landing() {
       <div className="max-w-3xl mx-8 md:mx-auto">
         <div className="my-20 space-y-10 text-center sm:my-16 md:space-y-14">
           <div className="space-y-5 md:space-y-8">
-            <h1 className="text-3xl font-semibold text-white sm:text-5xl md:text-6xl md:text-gray-800">
+            <h1 className="text-2xl font-semibold text-white sm:text-5xl md:text-6xl md:text-gray-800">
               Bem vindo ao Futteboxd.
             </h1>
             <h2 className="text-lg text-gray-100 md:text-2xl md:mx-0.5 md:text-gray-600">

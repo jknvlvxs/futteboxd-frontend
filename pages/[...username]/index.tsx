@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Background from "../../components/Background";
 import Footer from "../../components/Footer";
@@ -19,6 +19,7 @@ const Home: NextPage = () => {
 
   const [profile, setProfile] = useState<ProfileModel | null>(null);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
+  const isLoading = useRef(false);
 
   const fetchProfile = async () => {
     const response = await fetch(`/api/profile/${router.query.username}`, {
@@ -30,6 +31,8 @@ const Home: NextPage = () => {
 
     const data = await response.json();
 
+    isLoading.current = false;
+
     if (data.error) {
       console.error(`Ocorreu um erro: ${data.message}`);
       toast.error(`${data.message}`, toastConfig as any);
@@ -39,7 +42,10 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    if (!!router.query.username) fetchProfile();
+    if (router.query.username && !isLoading.current) {
+      isLoading.current = true;
+      fetchProfile();
+    }
   }, [router.query.username]);
 
   const followProfile = async (username: string) => {
