@@ -1,22 +1,29 @@
-import Typed from 'typed.js';
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import Typed from "typed.js";
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const Element = styled.span`
   text-align: center;
 `;
 
-const words = ['startup.', 'website.', 'business.'];
+const words = [
+  "Bem-vindo ao Futteboxd.", // Portugues
+  "Bienvenido a Futteboxd.", // Espanhol
+  "Welcome to Futteboxd.", // Inglês
+  "Bienvenue sur Futteboxd.", // Francês
+  "Willkommen bei Futteboxd.", // Alemão
+  "Benvenuto su Futteboxd.", // Italiano
+];
 
 class Typing extends React.Component {
   componentDidMount() {
     const options = {
       strings: words,
-      typeSpeed: 65,
-      backSpeed: 65,
+      typeSpeed: 85,
+      backSpeed: 100,
       loop: true,
       showCursor: true,
-      cursorChar: '|',
+      cursorChar: "|",
     };
     this.typed = new Typed(this.el, options);
   }
@@ -29,7 +36,7 @@ class Typing extends React.Component {
     return (
       <>
         <Element
-          style={{ whiteSpace: 'pre' }}
+          style={{ whiteSpace: "pre" }}
           ref={(el) => {
             this.el = el;
           }}
