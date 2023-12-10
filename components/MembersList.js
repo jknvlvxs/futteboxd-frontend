@@ -1,25 +1,25 @@
 import { useRouter } from "next/router";
 
-function ListWrapper(props) {
+export function ListWrapper(props) {
   const { members } = props;
+  console.log(members);
   const router = useRouter();
 
   return (
     <div className="max-w-full mx-auto">
       <div className="flow-root">
         <ul role="list" className="divide-y divide-gray-70">
-          {members.map((member, index) => (
+          {members.map((member) => (
             <li
               className="py-3 sm:py-4 hover:cursor-pointer"
               onClick={() => router.push(member.username)}
+              key={member.id}
             >
               <div className="flex items-center space-x-4">
                 <div className="flex-shrink-0">
                   <img
-                    className="w-24 h-24 rounded-full"
-                    src={`https://flowbite.com/docs/images/people/profile-picture-${
-                      (index % 5) + 1
-                    }.jpg`}
+                    className="ml-5 w-24 h-24 rounded-full"
+                    src={member.avatar}
                     alt={`${member.username} image`}
                   />
                 </div>
@@ -33,36 +33,42 @@ function ListWrapper(props) {
                     children={member.username}
                   />
                 </div>
-                <div className="flex-1 min-w-1 hidden lg:block md:block">
-                  <p
-                    className="text-sm font-medium text-gray-800 truncate"
-                    children={10}
-                  />
-                  <p
-                    className="text-sm text-gray-800 truncate"
-                    children="Reviews"
-                  />
-                </div>
-                <div className="flex-1 min-w-1 hidden lg:block md:block">
-                  <p
-                    className="text-sm font-medium text-gray-800 truncate"
-                    children={213}
-                  />
-                  <p
-                    className="text-sm text-gray-800 truncate"
-                    children="Seguidores"
-                  />
-                </div>
-                <div className="flex-1 min-w-1 hidden lg:block md:block">
-                  <p
-                    className="text-sm font-medium text-gray-800 truncate"
-                    children={808}
-                  />
-                  <p
-                    className="text-sm text-gray-800 truncate"
-                    children="Seguindo"
-                  />
-                </div>
+                {member.reviews && (
+                  <div className="flex-1 min-w-1 hidden lg:block md:block">
+                    <p
+                      className="text-sm font-medium text-gray-800 truncate"
+                      children={member.reviews.length}
+                    />
+                    <p
+                      className="text-sm text-gray-800 truncate"
+                      children="Reviews"
+                    />
+                  </div>
+                )}
+                {member.followers && (
+                  <div className="flex-1 min-w-1 hidden lg:block md:block">
+                    <p
+                      className="text-sm font-medium text-gray-800 truncate"
+                      children={member.followers.length}
+                    />
+                    <p
+                      className="text-sm text-gray-800 truncate"
+                      children="Seguidores"
+                    />
+                  </div>
+                )}
+                {member.following && (
+                  <div className="flex-1 min-w-1 hidden lg:block md:block">
+                    <p
+                      className="text-sm font-medium text-gray-800 truncate"
+                      children={member.following.length}
+                    />
+                    <p
+                      className="text-sm text-gray-800 truncate"
+                      children="Seguindo"
+                    />
+                  </div>
+                )}
               </div>
             </li>
           ))}
@@ -73,32 +79,7 @@ function ListWrapper(props) {
 }
 
 export default function MembersList(props) {
-  // const { members } = props;
-
-  const members = [
-    { name: "Júlio", username: "julio" },
-    { name: "Jullkun", username: "jullkun" },
-    { name: "Bruce Wayne", username: "batman" },
-    { name: "Clark Kent", username: "superman" },
-    { name: "Diana Prince", username: "wonderwoman" },
-    { name: "Barry Allen", username: "theflash" },
-    { name: "Arthur Curry", username: "aquaman" },
-    { name: "Hal Jordan", username: "greenlantern" },
-    { name: "Oliver Queen", username: "greenarrow" },
-    { name: "Selina Kyle", username: "catwoman" },
-    { name: "Tony Stark", username: "ironman" },
-    { name: "Steve Rogers", username: "captainamerica" },
-    { name: "Natasha Romanoff", username: "blackwidow" },
-    { name: "Thor Odinson", username: "thor" },
-    { name: "Bruce Banner", username: "hulk" },
-    { name: "Peter Parker", username: "spiderman" },
-    { name: "Wade Wilson", username: "deadpool" },
-    { name: "Carol Danvers", username: "captainmarvel" },
-    { name: "T'Challa", username: "blackpanther" },
-    { name: "Jean Grey", username: "phoenix" },
-    { name: "Scott Summers", username: "cyclops" },
-    { name: "Logan", username: "wolverine" },
-  ];
+  const { members } = props;
 
   return (
     <section>

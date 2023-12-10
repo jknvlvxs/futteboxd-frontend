@@ -1,8 +1,74 @@
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import Members from "../pages/members";
+import MembersList, { ListWrapper } from "./MembersList";
+
+function FollowsModal(props) {
+  const { modalContent, setModalContent, modalType } = props;
+
+  return (
+    <Transition.Root show={modalContent.length > 0} as={Fragment}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        open={modalContent.length > 0}
+        onClose={() => setModalContent([])}
+      >
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 z-10 w-full overflow-y-auto">
+          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              enterTo="opacity-100 translate-y-0 sm:scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            >
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl ">
+                {modalType === "reviews" ? (
+                  <div>teste</div>
+                ) : (
+                  <ListWrapper
+                    members={modalContent.map((m) => {
+                      if (modalType === "followers") return m.follower;
+                      if (modalType === "following") return m.following;
+                    })}
+                  />
+                )}
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
+        </div>
+      </Dialog>
+    </Transition.Root>
+  );
+}
 export function DefaultProfile(props) {
-  const { profile, children } = props;
+  const { profile, children, showEdit = false } = props;
+
+  const [modalContent, setModalContent] = useState([]);
+  const [modalType, setModalType] = useState("");
 
   return (
     <>
+      <FollowsModal
+        modalContent={modalContent}
+        setModalContent={setModalContent}
+        modalType={modalType}
+      />
       <div className="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
@@ -19,24 +85,41 @@ export function DefaultProfile(props) {
             </div>
             <div className="w-full text-center mt-20">
               <div className="flex justify-center lg:pt-4 pt-8 pb-0">
-                <div className="p-3 text-center">
+                <div
+                  className="p-3 text-center hover:cursor-pointer"
+                  onClick={() => {
+                    setModalType("reviews");
+                    setModalContent(profile.reviews);
+                  }}
+                >
                   <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
-                    3,360
+                    {profile.reviews.length}
                   </span>
-                  <span className="text-sm text-slate-400">Photos</span>
+                  <span className="text-sm text-slate-400 ">Reviews</span>
                 </div>
-                <div className="p-3 text-center">
+                <div
+                  className="p-3 text-center hover:cursor-pointer"
+                  onClick={() => {
+                    setModalType("followers");
+                    setModalContent(profile.followers);
+                  }}
+                >
                   <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
-                    2,454
+                    {profile.followers.length}
                   </span>
-                  <span className="text-sm text-slate-400">Followers</span>
+                  <span className="text-sm text-slate-400">Seguidores</span>
                 </div>
-
-                <div className="p-3 text-center">
+                <div
+                  className="p-3 text-center hover:cursor-pointer"
+                  onClick={() => {
+                    setModalType("following");
+                    setModalContent(profile.following);
+                  }}
+                >
                   <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
-                    564
+                    {profile.following.length}
                   </span>
-                  <span className="text-sm text-slate-400">Following</span>
+                  <span className="text-sm text-slate-400">Seguindo</span>
                 </div>
               </div>
             </div>
@@ -74,18 +157,30 @@ export function DefaultProfile(props) {
 }
 
 export function Profile(props) {
-  const { profile, followProfile } = props;
+  const { profile, user, followProfile } = props;
+
+  const follows = profile.followers.some(
+    (f) => f.follower.username === user.username
+  );
 
   return (
     <DefaultProfile
       profile={profile}
       children={
         <>
-          <a
-            onClick={() => followProfile(profile.username)}
-            className="font-normal text-slate-700 hover:text-slate-400 hover:cursor-pointer"
-            children="Seguir"
-          />
+          {follows ? (
+            <a
+              onClick={() => followProfile()}
+              className="font-normal text-red-700 hover:text-red-400 hover:cursor-pointer"
+              children="Deixar de Seguir"
+            />
+          ) : (
+            <a
+              onClick={() => followProfile()}
+              className="font-normal text-slate-700 hover:text-slate-400 hover:cursor-pointer"
+              children="Seguir"
+            />
+          )}
         </>
       }
     />

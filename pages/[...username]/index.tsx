@@ -22,12 +22,7 @@ const Home: NextPage = () => {
   const isLoading = useRef(false);
 
   const fetchProfile = async () => {
-    const response = await fetch(`/api/profile/${router.query.username}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(`/api/profile/${router.query.username}`);
 
     const data = await response.json();
 
@@ -48,12 +43,27 @@ const Home: NextPage = () => {
     }
   }, [router.query.username]);
 
-  const followProfile = async (username: string) => {
+  const followProfile = async () => {
     if (!user) {
       return setOpenLogin(true);
     }
 
-    alert("Implementar followProfile");
+    if (profile) {
+      const response = await fetch("/api/follows", {
+        method: "POST",
+        body: JSON.stringify({ following: profile.id }),
+      });
+      const data = await response.json();
+
+      isLoading.current = false;
+
+      if (data.error) {
+        console.error(`Ocorreu um erro: ${data.message}`);
+        toast.error(`${data.message}`, toastConfig as any);
+      } else {
+        fetchProfile();
+      }
+    }
   };
 
   return (
@@ -75,10 +85,18 @@ const Home: NextPage = () => {
             user.username === profile.username ? (
               <MyProfile profile={profile} signOut={signOut} />
             ) : (
-              <Profile profile={profile} followProfile={followProfile} />
+              <Profile
+                profile={profile}
+                user={user}
+                followProfile={followProfile}
+              />
             )
           ) : (
-            <Profile profile={profile} followProfile={followProfile} />
+            <Profile
+              profile={profile}
+              user={user}
+              followProfile={followProfile}
+            />
           )
         ) : (
           <Loading />
