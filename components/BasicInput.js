@@ -16,7 +16,7 @@ export default function BasicInput(ref) {
       <div className="sm:col-span-3">
         <label
           htmlFor={ref.name}
-          className="block text-sm font-medium leading-6 text-gray-900"
+          className="block text-sm font-medium leading-6 text-gray-900 w-5/6 md:w-full mx-auto"
           children={ref.label}
         />
         <div className="mt-2">
@@ -36,7 +36,7 @@ export default function BasicInput(ref) {
                   id={ref.name}
                   style={getStyles(errors[field.name])}
                   autoComplete={ref.name}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-5/6 md:w-full mx-auto rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {errors[field.name] && (
                   <ErrorMessage name={ref.name}>

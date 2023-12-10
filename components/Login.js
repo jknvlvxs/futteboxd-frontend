@@ -61,7 +61,7 @@ export default function Login(props) {
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 w-full overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex w-full justify-center p-1 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -72,7 +72,7 @@ export default function Login(props) {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl ">
-                <section className="h-auto py-20 flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 items-center my-2 md:my-0">
+                <section className="h-auto py-10 flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 items-center my-2 md:my-0">
                   <div className="">
                     <Formik
                       initialValues={{
@@ -108,20 +108,19 @@ export default function Login(props) {
                             </div>
                           </div>
 
-                          <div className="mt-4 flex justify-between font-semibold text-sm">
-                            <label className="flex text-slate-500 hover:text-slate-600 cursor-pointer">
+                          <div className="mt-4 flex flex-col md:flex-row md:justify-between font-semibold text-sm">
+                            <label className="ml-5 md:ml-0 flex text-slate-500 hover:text-slate-600 cursor-pointer text-center md:text-left align-middle mb-4 md:mb-0">
                               <input className="mr-1" type="checkbox" />
                               <span>Lembrar de mim</span>
                             </label>
                             <a
-                              className="text-blue-600 hover:text-blue-700 hover:underline hover:underline-offset-4"
+                              className="ml-5 md:ml-0  text-blue-600 hover:text-blue-700 hover:underline hover:underline-offset-4"
                               href="#"
-                            >
-                              Esqueceu sua senha?
-                            </a>
+                              children="Esqueceu sua senha?"
+                            />
                           </div>
-                          <div className="mt-4 flex justify-between font-semibold text-sm">
-                            <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left align-middle">
+                          <div className="mt-4 flex flex-col md:flex-row md:justify-between font-semibold text-sm">
+                            <div className="font-semibold text-sm text-slate-500 text-center md:text-left align-middle mb-4 md:mb-0">
                               Não possui uma conta?{" "}
                               <a
                                 className="text-red-600 hover:underline hover:underline-offset-4"
@@ -132,10 +131,11 @@ export default function Login(props) {
                             </div>
                             <div className="text-center md:text-left">
                               <button
-                                className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
+                                className=" bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
                                 type="submit"
-                                children="Entrar"
-                              />
+                              >
+                                Entrar
+                              </button>
                             </div>
                           </div>
                         </Form>

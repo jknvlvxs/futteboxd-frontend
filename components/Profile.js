@@ -1,7 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import Members from "../pages/members";
-import MembersList, { ListWrapper } from "./MembersList";
+import { ListWrapper } from "./MembersList";
 
 function FollowsModal(props) {
   const { modalContent, setModalContent, modalType } = props;
@@ -27,7 +26,7 @@ function FollowsModal(props) {
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 w-full overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -37,11 +36,12 @@ function FollowsModal(props) {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl ">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-5/6 max-w-2xl ">
                 {modalType === "reviews" ? (
                   <div>teste</div>
                 ) : (
                   <ListWrapper
+                    setModalContent={setModalContent}
                     members={modalContent.map((m) => {
                       if (modalType === "followers") return m.follower;
                       if (modalType === "following") return m.following;
@@ -160,7 +160,7 @@ export function Profile(props) {
   const { profile, user, followProfile } = props;
 
   const follows = profile.followers.some(
-    (f) => f.follower.username === user.username
+    (f) => f.follower.username === user?.username
   );
 
   return (

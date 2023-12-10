@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 export function ListWrapper(props) {
-  const { members } = props;
+  const { members, setModalContent = () => {} } = props;
   console.log(members);
   const router = useRouter();
 
@@ -12,7 +12,10 @@ export function ListWrapper(props) {
           {members.map((member) => (
             <li
               className="py-3 sm:py-4 hover:cursor-pointer"
-              onClick={() => router.push(member.username)}
+              onClick={() => {
+                setModalContent([]);
+                router.push(member.username);
+              }}
               key={member.id}
             >
               <div className="flex items-center space-x-4">
