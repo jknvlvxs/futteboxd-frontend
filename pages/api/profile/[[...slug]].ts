@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { withIronSession } from "next-iron-session";
+import ironConfig from "../../../util/iron.config";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default withIronSession(handler, ironConfig);
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { slug } = req.query;
     const route = `${process.env.API_ROUTE}/profile/${slug}`;

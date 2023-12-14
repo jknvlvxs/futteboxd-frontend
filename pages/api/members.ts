@@ -1,9 +1,10 @@
+import { withIronSession } from "next-iron-session";
 import { NextApiRequest, NextApiResponse } from "next";
+import ironConfig from "../../util/iron.config";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default withIronSession(handler, ironConfig);
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const route = `${process.env.API_ROUTE}/profile`;
     const response = await fetch(route, {

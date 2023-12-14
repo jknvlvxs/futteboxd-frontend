@@ -32,6 +32,7 @@ const Members: NextPage = () => {
   };
 
   useEffect(() => {
+    if (isLoading.current) return;
     isLoading.current = true;
     fetchMembers();
   }, []);

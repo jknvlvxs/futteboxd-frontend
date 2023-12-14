@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 
 export function ListWrapper(props) {
   const { members, setModalContent = () => {} } = props;
-  console.log(members);
   const router = useRouter();
 
   return (
