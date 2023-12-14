@@ -4,8 +4,17 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import SignUp from "../../components/SignUp";
 import Background from "../../components/Background";
+import { useAuth } from "../../context/AuthContext";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  if (user) {
+    router.push("/");
+  }
+
   return (
     <>
       <Head>
@@ -21,7 +30,6 @@ const Home: NextPage = () => {
         <Background />
         <Header />
         <SignUp />
-        {/* <Action /> */}
         <Footer />
       </div>
     </>

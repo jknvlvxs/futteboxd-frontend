@@ -62,7 +62,14 @@ export default function Header(props) {
               <ul className="flex flex-wrap items-center justify-end flex-grow gap-2 pr-4 space-x-2 md:gap-6 md:space-x-6">
                 <li>
                   <a
-                    href="#features"
+                    href="/leagues"
+                    className="text-lg text-white md:text-black hover:text-gray-300 md:hover:text-gray-700"
+                    children="Ligas"
+                  />
+                </li>
+                <li>
+                  <a
+                    href="/scores"
                     className="text-lg text-white md:text-black hover:text-gray-300 md:hover:text-gray-700"
                     children="Partidas"
                   />

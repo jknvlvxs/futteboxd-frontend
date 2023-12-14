@@ -11,7 +11,7 @@ const About: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Members • Futteboxd</title>
+        <title>About • Futteboxd</title>
         <meta content="Example" name="description" />
         <meta property="og:url" content="example.com" />
         <meta property="og:description" content="Example" />
@@ -19,9 +19,11 @@ const About: NextPage = () => {
         <meta property="og:image" content="" />
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
-      <Header user={user} />
-      <AboutProject />
-      <Footer />
+      <div className="h-full bg-gradient-to-br from-cyan-300 to-pink-300 brightness-100 text-gray-600">
+        <Header user={user} />
+        <AboutProject />
+        <Footer />
+      </div>
     </>
   );
 };

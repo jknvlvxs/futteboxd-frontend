@@ -1,42 +1,23 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
-import Action from "../../components/Action";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import AboutProject from "../../components/About";
+import Action from "../../components/Action";
+import Background from "../../components/Background";
 import Features from "../../components/Features";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Landing from "../../components/Landing";
 import Pricing from "../../components/Pricing";
 import Testimonies from "../../components/Testimonies";
-import { User } from "../../types/user.types";
-import { useRouter } from "next/router";
-import { Profile } from "../../types/profile.types";
 import { useAuth } from "../../context/AuthContext";
-import Background from "../../components/Background";
-// import jwt from "jsonwebtoken";
 
 const Home: NextPage = () => {
   const router = useRouter();
   const { user } = useAuth();
 
-  const [username, setUsername] = useState<string>(
-    router.query.username as string
-  );
-  const [profile, setProfile] = useState<Profile | null>(null);
-
-  useEffect(() => {
-    const profile: Profile = {
-      email: "sada@asda,com",
-      username: router.query.username as string,
-    };
-
-    setProfile(profile);
-  }, []);
-
-  if (!profile) return <p>Usuário não encontrado</p>;
   return (
     <>
       <Head>

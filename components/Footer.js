@@ -15,24 +15,18 @@ export default function Footer() {
                 <a href="/members">Membros</a>
               </li>
               <li>
-                <a href="/matches">Partidas</a>
+                <a href="/reviews">Reviews</a>
               </li>
             </ul>
             <ul className="space-y-1.5">
               <li className="mb-4 font-semibold text-white uppercase">
-                Product
+                Futebol
               </li>
               <li>
-                <a href="#features">Features</a>
+                <a href="/leagues">Ligas</a>
               </li>
               <li>
-                <a href="#">Design</a>
-              </li>
-              <li>
-                <a href="#">Purpose</a>
-              </li>
-              <li>
-                <a href="#">System Status</a>
+                <a href="/scores">Partidas</a>
               </li>
             </ul>
             <ul className="space-y-1.5">
