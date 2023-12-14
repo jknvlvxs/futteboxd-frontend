@@ -1,3 +1,5 @@
+import { IronSession } from "iron-session";
+
 const ironConfig: {
   password: string;
   cookieName: string;

@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Action from "../components/Action";
 import Background from "../components/Background";
-import Demo from "../components/Demo";
+import AboutProject from "../components/About";
 import Features from "../components/Features";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
         <Header user={user} />
         <Landing />
         <Features />
-        <Demo />
+        <AboutProject />
         <Pricing />
         <Testimonies />
         <Action />

@@ -1,4 +1,4 @@
-export default function Demo() {
+export default function AboutProject() {
   return (
     <section id="demo" className="py-20 bg-opacity-50 bg-emerald-50">
       <div className="mx-8 max-w-7xl md:mx-10 lg:mx-20 xl:mx-auto">
@@ -11,8 +11,8 @@ export default function Demo() {
               Here's a demo
             </h1>
             <p className="mx-auto text-xl md:w-2/3 md:text-2xl">
-              Talk a little bit about the product here and how it can
-              be revolutionary for the customer.
+              Talk a little bit about the product here and how it can be
+              revolutionary for the customer.
             </p>
           </div>
         </div>
@@ -25,8 +25,8 @@ export default function Demo() {
           Built with Next.js & TailwindCSS
         </h2>
         <p className="mt-4 text-lg font-normal lg:max-w-3xl">
-          Aliquam ultrices sagittis orci a scelerisque purus. Ligula
-          ullamcorper malesuada proin libero nunc consequat.
+          Aliquam ultrices sagittis orci a scelerisque purus. Ligula ullamcorper
+          malesuada proin libero nunc consequat.
         </p>
         <img
           src="images/product.png"
@@ -40,11 +40,10 @@ export default function Demo() {
                 The latest and greatest.
               </h3>
               <p className="mt-1 text-gray-800 text-md">
-                Tortor dignissim convallis aenean et tortor at. At
-                ultrices mi tempus imperdiet nulla malesuada. Id
-                cursus metus aliquam eleifend mi. Quis ipsum
-                suspendisse ultrices gravida dictum fusce ut.
-                Adipiscing elit ut aliquam purus.
+                Tortor dignissim convallis aenean et tortor at. At ultrices mi
+                tempus imperdiet nulla malesuada. Id cursus metus aliquam
+                eleifend mi. Quis ipsum suspendisse ultrices gravida dictum
+                fusce ut. Adipiscing elit ut aliquam purus.
               </p>
             </div>
           </div>
@@ -54,8 +53,8 @@ export default function Demo() {
                 Mighty quick.
               </h3>
               <p className="mt-1 text-gray-800 text-md">
-                Sed elementum tempus egestas sed sed risus pretium
-                quam vulputate.
+                Sed elementum tempus egestas sed sed risus pretium quam
+                vulputate.
               </p>
             </div>
           </div>
@@ -69,8 +68,8 @@ export default function Demo() {
           Continuously exceeds expectations
         </h2>
         <p className="mt-4 text-lg font-normal lg:max-w-3xl">
-          Aliquam ultrices sagittis orci a scelerisque purus. Ligula
-          ullamcorper malesuada proin libero nunc consequat.
+          Aliquam ultrices sagittis orci a scelerisque purus. Ligula ullamcorper
+          malesuada proin libero nunc consequat.
         </p>
         <img
           src="images/product.png"
@@ -84,8 +83,8 @@ export default function Demo() {
                 Defies the odds.
               </h3>
               <p className="mt-1 text-gray-800 text-md">
-                Tortor dignissim convallis aenean et tortor at. At
-                ultrices mi tempus imperdiet nulla malesuada.
+                Tortor dignissim convallis aenean et tortor at. At ultrices mi
+                tempus imperdiet nulla malesuada.
               </p>
             </div>
           </div>
@@ -95,19 +94,17 @@ export default function Demo() {
                 Creatively designed.
               </h3>
               <p className="mt-1 text-gray-800 text-md">
-                Id cursus metus aliquam eleifend mi. Quis ipsum
-                suspendisse ultrices gravida dictum fusce ut.
+                Id cursus metus aliquam eleifend mi. Quis ipsum suspendisse
+                ultrices gravida dictum fusce ut.
               </p>
             </div>
           </div>
           <div className="flex flex-col justify-between p-5 transition duration-500 border-2 shadow-md border-tranparent rounded-xl bg-emerald-200 bg-opacity-30 hover:border-emerald-300 hover:shadow-xl">
             <div>
-              <h3 className="text-lg font-medium text-gray-900">
-                Powerful.
-              </h3>
+              <h3 className="text-lg font-medium text-gray-900">Powerful.</h3>
               <p className="mt-1 text-gray-800 text-md">
-                Tortor dignissim convallis aenean et tortor at. Id
-                cursus metus aliquam eleifend mi.
+                Tortor dignissim convallis aenean et tortor at. Id cursus metus
+                aliquam eleifend mi.
               </p>
             </div>
           </div>
