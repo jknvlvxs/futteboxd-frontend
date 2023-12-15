@@ -93,7 +93,7 @@ export default function Header(props) {
                 {user ? (
                   <li>
                     <a
-                      href={user.username}
+                      href={`/${user.username}`}
                       className="bg-white rounded-full bg-opacity-40 px-4 text-lg text-white md:text-black shadow-sm transition-colors duration-75 group gap-[0.25em] inline-flex items-center py-1.5 hover:cursor-pointer hover:bg-opacity-90"
                     >
                       <img

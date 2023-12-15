@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import LiveScores from "../../components/LiveScores";
+import ScoreReview from "../../components/ScoreReview";
 import Loading from "../../components/Loading";
 import { useAuth } from "../../context/AuthContext";
 import toastConfig from "../../util/toast.config";
@@ -19,6 +19,7 @@ const Members: NextPage = () => {
   const isLoading = useRef(false);
 
   const [score, setScore] = useState<Score>();
+  const [openLogin, setOpenLogin] = useState<boolean>(false);
 
   const fetchFixures = async () => {
     const id = Array.isArray(router.query.id)
@@ -67,11 +68,11 @@ const Members: NextPage = () => {
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <div className="h-full bg-gradient-to-br from-cyan-500 to-pink-500 brightness-100 text-gray-600">
-        <Header user={user} />
+        <Header user={user} handleOpenModal={openLogin} />
         {isLoading.current || !score ? (
           <Loading />
         ) : (
-          <div>{JSON.stringify(score)}</div>
+          <ScoreReview user={user} score={score} setOpenLogin={setOpenLogin} />
         )}
         <Footer />
       </div>
