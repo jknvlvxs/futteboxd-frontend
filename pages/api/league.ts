@@ -6,8 +6,8 @@ export default withIronSession(handler, ironConfig);
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { country, season } = req.query;
-    const route = `${process.env.API_ROUTE}/leagues/${country}/${season}`;
+    const { id } = req.query;
+    const route = `${process.env.API_ROUTE}/leagues/${id}`;
     const response = await fetch(route, {
       method: "GET",
       headers: {
