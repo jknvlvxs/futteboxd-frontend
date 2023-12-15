@@ -8,17 +8,24 @@ import LiveScores from "../../components/LiveScores";
 import Loading from "../../components/Loading";
 import { useAuth } from "../../context/AuthContext";
 import toastConfig from "../../util/toast.config";
-import { LiveScore } from "../../types/score.types";
+import { LiveScore, Score } from "../../types/score.types";
+import { useRouter } from "next/router";
+import { Team } from "../../types/team.types";
 
 const Members: NextPage = () => {
   const { user } = useAuth();
+  const router = useRouter();
 
   const isLoading = useRef(false);
 
-  const [scores, setScores] = useState<LiveScore>();
+  const [score, setScore] = useState<Score>();
 
   const fetchFixures = async () => {
-    const response = await fetch(`/api/live-score`);
+    const id = Array.isArray(router.query.id)
+      ? router.query.id[0]
+      : router.query.id;
+
+    const response = await fetch(`/api/scores/${id}`);
     const data = await response.json();
 
     isLoading.current = false;
@@ -27,21 +34,31 @@ const Members: NextPage = () => {
       console.error(`Ocorreu um erro: ${data.message}`);
       toast.error(`${data.message}`, toastConfig as any);
     } else {
-      setScores(data);
+      setScore(data);
       isLoading.current = false;
     }
   };
 
   useEffect(() => {
     if (isLoading.current) return;
-    isLoading.current = true;
-    fetchFixures();
-  }, []);
+
+    if (router.query.id) {
+      isLoading.current = true;
+      fetchFixures();
+    }
+  }, [router.query.id]);
 
   return (
     <>
       <Head>
-        <title>Partidas • Futteboxd</title>
+        <title>
+          {score
+            ? `${(score?.homeTeam as Team).name ?? ""} ${
+                score?.final_score || score?.halftime_score || "vs."
+              } ${(score?.awayTeam as Team).name ?? ""}`
+            : "Partida"}{" "}
+          • Futteboxd
+        </title>
         <meta content="Example" name="description" />
         <meta property="og:url" content="example.com" />
         <meta property="og:description" content="Example" />
@@ -51,13 +68,10 @@ const Members: NextPage = () => {
       </Head>
       <div className="h-full bg-gradient-to-br from-cyan-500 to-pink-500 brightness-100 text-gray-600">
         <Header user={user} />
-        {isLoading.current || !scores ? (
+        {isLoading.current || !score ? (
           <Loading />
         ) : (
-          <div>
-            <LiveScores title="Partidas ao Vivo" scores={scores.live} />
-            <LiveScores title="Jogos de Hoje" scores={scores.today} />
-          </div>
+          <div>{JSON.stringify(score)}</div>
         )}
         <Footer />
       </div>
