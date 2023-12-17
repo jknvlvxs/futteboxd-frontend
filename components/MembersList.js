@@ -81,7 +81,7 @@ export function ListWrapper(props) {
 }
 
 export default function MembersList(props) {
-  const { members } = props;
+  const { members = [] } = props;
 
   return (
     <section>

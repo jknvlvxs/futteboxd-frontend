@@ -1,12 +1,7 @@
-import { useRouter } from "next/router";
-import CountriesSelect from "./CountriesSelect";
-import SeasonsSelect from "./SeasonsSelect";
-import Moment from "react-moment";
 import { defaultLogo } from "../types/team.types";
 
 export default function LiveScores(props) {
-  const router = useRouter();
-  const { title, scores } = props;
+  const { title = "", scores = [] } = props;
 
   return (
     <section>

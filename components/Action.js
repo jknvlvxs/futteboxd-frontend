@@ -1,8 +1,4 @@
-import Typing from "./Typing";
-
 export default function Action(props) {
-  const { user = null } = props;
-
   return (
     <div className="max-w-full md:mx-10 lg:mx-20 xl:mx-auto">
       <div

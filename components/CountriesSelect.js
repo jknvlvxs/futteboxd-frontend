@@ -7,7 +7,7 @@ function classNames(...classes) {
 }
 
 export default function CountriesSelect(props) {
-  const { values, onChange } = props;
+  const { values = [], onChange } = props;
   const [selected, setSelected] = useState(values[0]);
 
   return (

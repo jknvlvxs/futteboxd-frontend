@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Login from "./Login";
 
 export default function Header(props) {
-  const { user, handleOpenModal } = props;
+  const { user = null, handleOpenModal } = props;
 
   const [open, setOpen] = useState(false);
 

@@ -1,5 +1,7 @@
 export default function LeagueScores(props) {
-  const { league } = props;
+  const { league = null } = props;
+
+  if (!league) return;
 
   return (
     <section>

@@ -1,7 +1,7 @@
 import { DefaultProfile } from "./Profile";
 
 export default function MyProfile(props) {
-  const { profile, signOut } = props;
+  const { profile = null, signOut } = props;
 
   return (
     <DefaultProfile

@@ -5,8 +5,13 @@ import Moment from "react-moment";
 
 export default function Leagues(props) {
   const router = useRouter();
-  const { countries, leagues, seasons, onChangeCountry, onChangeSeason } =
-    props;
+  const {
+    countries = [],
+    leagues = [],
+    seasons = [],
+    onChangeCountry,
+    onChangeSeason,
+  } = props;
 
   return (
     <section>
