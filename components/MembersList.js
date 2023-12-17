@@ -55,7 +55,7 @@ export function ListWrapper(props) {
                     />
                     <p
                       className="text-sm text-gray-800 truncate"
-                      children="Seguidores"
+                      children="Followers"
                     />
                   </div>
                 )}
@@ -67,7 +67,7 @@ export function ListWrapper(props) {
                     />
                     <p
                       className="text-sm text-gray-800 truncate"
-                      children="Seguindo"
+                      children="Following"
                     />
                   </div>
                 )}
@@ -89,7 +89,8 @@ export default function MembersList(props) {
         <div className="my-20 space-y-10 text-center sm:my-16 md:space-y-14">
           <div className="space-y-5 md:space-y-8">
             <h1 className="text-2xl font-semibold text-white sm:text-4xl md:text-4xl md:text-gray-800">
-              Amantes de futebol, críticos e amigos — veja nossa comunidade.
+              Football Enthusiasts, Critics, and Friends — Explore Our
+              Community.
             </h1>
           </div>
         </div>

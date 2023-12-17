@@ -14,7 +14,7 @@ export default function Leagues(props) {
         <div className="my-20 space-y-10 text-center sm:my-16 md:space-y-14">
           <div className="space-y-5 md:space-y-8">
             <h1 className="text-2xl font-semibold text-white sm:text-4xl md:text-4xl md:text-gray-800">
-              Procure as ligas ao redor do mundo
+              Find leagues from all over the world
             </h1>
           </div>
         </div>

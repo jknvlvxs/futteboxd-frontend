@@ -41,7 +41,7 @@ const Members: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Partidas • Futteboxd</title>
+        <title>Matches • Futteboxd</title>
         <meta content="Example" name="description" />
         <meta property="og:url" content="example.com" />
         <meta property="og:description" content="Example" />
@@ -55,8 +55,8 @@ const Members: NextPage = () => {
           <Loading />
         ) : (
           <div>
-            <LiveScores title="Partidas ao Vivo" scores={scores.live} />
-            <LiveScores title="Jogos de Hoje" scores={scores.today} />
+            <LiveScores title="Live Scores" scores={scores.live} />
+            <LiveScores title="Today Matches" scores={scores.today} />
           </div>
         )}
         <Footer />

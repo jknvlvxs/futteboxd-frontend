@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Futteboxd - Cadastre-se</title>
+        <title>Futteboxd - Sign-up</title>
         <meta content="Example" name="description" />
         <meta property="og:url" content="example.com" />
         <meta property="og:description" content="Example" />

@@ -9,16 +9,14 @@ import BasicInput from "./BasicInput";
 
 const SignupSchema = Yup.object().shape({
   username: Yup.string()
-    .min(2, "Nome de usuário deve conter no mínimo 2 caracteres!")
-    .max(14, "Nome de usuário deve conter no máximo 14 caracteres!")
+    .min(2, "Username must be at least 2 characters!")
+    .max(14, "Username must be at most 14 characters!")
     .trim()
-    .required("Campo obrigatório"),
-  email: Yup.string()
-    .email("Endereço de email inválido")
-    .required("Campo obrigatório"),
+    .required("Required field"),
+  email: Yup.string().email("Invalid email address").required("Required field"),
   password: Yup.string()
-    .min(8, "O tamanho mínimo de senha é 8 caracteres")
-    .required("Campo obrigatório"),
+    .min(8, "Minimum password length is 8 characters")
+    .required("Required field"),
   notification: Yup.boolean(),
 });
 
@@ -38,7 +36,7 @@ export default function SignUp() {
     const data = await response.json();
 
     if (data.error) {
-      console.error(`Ocorreu um erro: ${data.message}`);
+      console.error(`An error occurred: ${data.message}`);
       actions.setErrors(data.error);
       toast.error(`${data.message}`, toastConfig);
     } else {
@@ -54,7 +52,7 @@ export default function SignUp() {
         <div className="my-20 space-y-10 text-center sm:my-16 md:space-y-14">
           <div className="space-y-5 md:space-y-8">
             <h1 className="text-3xl font-semibold text-white sm:text-5xl md:text-6xl md:text-gray-800">
-              Cadastre-se no Futteboxd.
+              Sign-up on Futteboxd.
             </h1>
           </div>
         </div>
@@ -78,11 +76,10 @@ export default function SignUp() {
                 <div className="space-y-12 bg-white rounded-md  shadow-lg">
                   <div className="border-b border-gray-900/10 p-12">
                     <h2 className="text-base font-semibold leading-7 text-gray-900">
-                      Junte-se à nossa comunidade
+                      Join our community
                     </h2>
                     <p className="mt-1 text-sm leading-6 text-gray-600">
-                      Faça parte da melhor plataforma de reviews de partidas de
-                      futebol
+                      Become part of the best football match review platform.
                     </p>
 
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -91,7 +88,7 @@ export default function SignUp() {
                         name="username"
                         type="text"
                         placeholder="@futteboxd"
-                        label="Nome de Usuário"
+                        label="Username"
                         required={true}
                       />
 
@@ -99,8 +96,8 @@ export default function SignUp() {
                         errors={errors}
                         name="email"
                         type="email"
-                        placeholder="usuario@futteboxd.com"
-                        label="E-mail"
+                        placeholder="user@futteboxd.com"
+                        label="Email"
                         required={true}
                       />
                       <BasicInput
@@ -108,7 +105,7 @@ export default function SignUp() {
                         name="password"
                         type="password"
                         placeholder="********"
-                        label="Senha"
+                        label="Password"
                         required={true}
                       />
 
@@ -132,7 +129,7 @@ export default function SignUp() {
                               <label
                                 htmlFor="notification"
                                 className="font-medium text-gray-900"
-                                children="Desejo receber notificações via email."
+                                children="I want to receive notifications via email."
                               />
                             </div>
                           </div>
@@ -149,7 +146,7 @@ export default function SignUp() {
                       <button
                         type="submit"
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        children="Cadastrar"
+                        children="Sign Up"
                       />
                     </div>
                   </div>

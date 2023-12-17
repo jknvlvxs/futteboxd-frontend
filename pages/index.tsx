@@ -28,10 +28,10 @@ const Home: NextPage = () => {
       <div className="h-full leading-normal text-gray-600">
         <Background />
         <Header user={user} />
-        <Landing />
-        <Features />
-        <AboutProject />
-        <Pricing />
+        <Landing user={user} />
+        {/* <Features /> */}
+        {/* <AboutProject /> */}
+        {/* <Pricing /> */}
         <Testimonies />
         <Action />
         <Footer />

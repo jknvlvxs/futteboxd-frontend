@@ -93,7 +93,7 @@ export default function Login(props) {
                                 name="username"
                                 type="text"
                                 placeholder="@futteboxd"
-                                label="Nome de Usuário"
+                                label="Username"
                                 required={true}
                               />
 
@@ -102,7 +102,7 @@ export default function Login(props) {
                                 name="password"
                                 type="password"
                                 placeholder="********"
-                                label="Senha"
+                                label="Password"
                                 required={true}
                               />
                             </div>
@@ -111,22 +111,22 @@ export default function Login(props) {
                           <div className="mt-4 flex flex-col md:flex-row md:justify-between font-semibold text-sm">
                             <label className="ml-5 md:ml-0 flex text-slate-500 hover:text-slate-600 cursor-pointer text-center md:text-left align-middle mb-4 md:mb-0">
                               <input className="mr-1" type="checkbox" />
-                              <span>Lembrar de mim</span>
+                              <span>Remember-me</span>
                             </label>
                             <a
                               className="ml-5 md:ml-0  text-blue-600 hover:text-blue-700 hover:underline hover:underline-offset-4"
                               href="#"
-                              children="Esqueceu sua senha?"
+                              children="Forgot your password?"
                             />
                           </div>
                           <div className="mt-4 flex flex-col md:flex-row md:justify-between font-semibold text-sm">
                             <div className="font-semibold text-sm text-slate-500 text-center md:text-left align-middle mb-4 md:mb-0">
-                              Não possui uma conta?{" "}
+                              Don't have a account?{" "}
                               <a
                                 className="text-red-600 hover:underline hover:underline-offset-4"
                                 href="register"
                               >
-                                Cadastre-se
+                                Sign-up
                               </a>
                             </div>
                             <div className="text-center md:text-left">
@@ -134,7 +134,7 @@ export default function Login(props) {
                                 className=" bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
                                 type="submit"
                               >
-                                Entrar
+                                Sign in
                               </button>
                             </div>
                           </div>
@@ -144,11 +144,11 @@ export default function Login(props) {
 
                     <div className="my-5 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
                       <p className="mx-4 mb-0 text-center font-semibold text-slate-500">
-                        Ou
+                        Or
                       </p>
                     </div>
                     <div className="text-center md:text-center">
-                      <label className="mr-1">Entrar com</label>
+                      <label className="mr-1">Sign in with</label>
                       <button
                         type="button"
                         className="mx-1 h-9 w-9 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-[0_4px_9px_-4px_#3b71ca]"

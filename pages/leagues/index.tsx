@@ -90,7 +90,7 @@ const LeaguesPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Ligas • Futteboxd</title>
+        <title>Leagues • Futteboxd</title>
         <meta content="Example" name="description" />
         <meta property="og:url" content="example.com" />
         <meta property="og:description" content="Example" />

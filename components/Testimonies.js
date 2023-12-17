@@ -1,10 +1,12 @@
-const Stars = ({ rating, size }) => {
+import { useRouter } from "next/router";
+
+export const Stars = ({ rating, size }) => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
 
   return (
-    <div className="flex items-center align-middle justify-center">
+    <div className="flex items-center align-middle justify-center mx-auto">
       <svg
         className={classNames(
           rating >= 1 ? "text-yellow-300" : "text-gray-500",
@@ -87,7 +89,7 @@ const Review = ({ name, position, text, photoLink, rating, favorite }) => {
   return (
     <div className="relative group">
       <div className="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200" />
-      <a className="cursor-pointer">
+      <a href={`/${name}`} className="cursor-pointer">
         <div className="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5 highlight">
           <div className="flex items-center space-x-4">
             <img
@@ -115,6 +117,7 @@ const Review = ({ name, position, text, photoLink, rating, favorite }) => {
 
 export default function Testimonies(props) {
   const { reviews = [] } = props;
+  const router = useRouter();
 
   const divideArray = (arr) => {
     const result = [[], [], []];
@@ -145,7 +148,7 @@ export default function Testimonies(props) {
               <Stars rating={average} size="w-10 h-10" />
             </h1>
             <p className="text-xl text-gray-100 md:text-center md:text-2xl">
-              Here's what others have to say about us.
+              Here's what others have to say about this match
             </p>
           </div>
         </div>

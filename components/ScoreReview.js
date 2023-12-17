@@ -95,17 +95,20 @@ export default function ScoreReview(props) {
 
   return (
     <div className="max-w-full mx-4 md:mx-28 my-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-row px-5 py-4 justify-around">
-        <img
-          className="rounded-t-lg w-24 h-24 md:w-40 md:h-40"
-          src={score.homeTeam.logo || defaultLogo}
-          alt=""
-        />
+      <div className="flex flex-col md:flex-row px-5 py-4 justify-around">
+        <div className="flex flex-col align-middle justify-center text-center">
+          <img
+            className="rounded-t-lg w-24 h-24 md:w-40 md:h-40 mx-auto"
+            src={score.homeTeam.logo || defaultLogo}
+            alt={score.homeTeam.name}
+          />
+          <p className="text-white text-lg mt-5">{score.homeTeam.name}</p>
+        </div>
         <div className="flex flex-col justify-between mx-5 leading-normal">
           <div className="flex flex-col md:flex-row justify-center md:justify-between text-center leading-normal">
             <img
-              className="rounded-t-lg w-6 h-6 md:w-12 md:h-12 mr-5"
-              src={score.league.flag || defaultLogo}
+              className="rounded-t-lg w-6 h-6 md:w-12 md:h-12 mr-5  mx-auto"
+              src={score.league.flag || score.league.logo || defaultLogo}
               alt=""
             />
             <h5 className="mt-2 text-sm md:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -136,11 +139,14 @@ export default function ScoreReview(props) {
             </div>
           )}
         </div>
-        <img
-          className="rounded-t-lg w-24 h-24 md:w-40 md:h-40"
-          src={score.awayTeam.logo || defaultLogo}
-          alt=""
-        />
+        <div className="flex flex-col align-middle justify-center text-center">
+          <img
+            className="rounded-t-lg w-24 h-24 md:w-40 md:h-40  mx-auto"
+            src={score.awayTeam.logo || defaultLogo}
+            alt={score.awayTeam.name}
+          />
+          <p className="text-white text-lg mt-5">{score.awayTeam.name}</p>
+        </div>
       </div>
       <div className="relative flex py-5 items-center">
         <div className="flex-grow border-t border-gray-400"></div>
@@ -211,7 +217,7 @@ export default function ScoreReview(props) {
               onClick={() => setOpenLogin(true)}
               className="bg-white rounded-full bg-opacity-40 px-4 mb-10 text-lg text-white md:text-black shadow-sm transition-colors duration-75 group gap-[0.25em] inline-flex items-center py-1.5 hover:cursor-pointer hover:bg-opacity-90"
             >
-              Entrar para escrever review
+              Sign in para escrever review
               <svg
                 viewBox="0 0 16 16"
                 height="1em"

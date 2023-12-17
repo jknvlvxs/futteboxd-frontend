@@ -64,21 +64,21 @@ export default function Header(props) {
                   <a
                     href="/leagues"
                     className="text-lg text-white md:text-black hover:text-gray-300 md:hover:text-gray-700"
-                    children="Ligas"
+                    children="Leagues"
                   />
                 </li>
                 <li>
                   <a
                     href="/scores"
                     className="text-lg text-white md:text-black hover:text-gray-300 md:hover:text-gray-700"
-                    children="Partidas"
+                    children="Matches"
                   />
                 </li>
                 <li>
                   <a
                     href="/members"
                     className="text-lg text-white md:text-black hover:text-gray-300 md:hover:text-gray-700"
-                    children="Membros"
+                    children="Members"
                   />
                 </li>
                 {/* <li>
@@ -87,7 +87,7 @@ export default function Header(props) {
                   onClick={() => handleOpenLogin()}
                   className="text-lg text-white md:text-black hover:text-gray-300 md:hover:text-gray-700"
                 >
-                  Entrar
+                  Sign in
                 </a>
               </li> */}
                 {user ? (
@@ -131,7 +131,7 @@ export default function Header(props) {
                       onClick={() => handleOpenLogin(true)}
                       className="bg-white rounded-full bg-opacity-40 px-4 text-lg text-white md:text-black shadow-sm transition-colors duration-75 group gap-[0.25em] inline-flex items-center py-1.5 hover:cursor-pointer hover:bg-opacity-90"
                     >
-                      Entrar
+                      Sign in
                       <svg
                         viewBox="0 0 16 16"
                         height="1em"

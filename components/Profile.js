@@ -1,6 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { ListWrapper } from "./MembersList";
+import { ReviewsWrapper } from "./ReviewsList";
 
 function FollowsModal(props) {
   const { modalContent, setModalContent, modalType } = props;
@@ -38,7 +39,7 @@ function FollowsModal(props) {
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-5/6 max-w-2xl ">
                 {modalType === "reviews" ? (
-                  <div>teste</div>
+                  <ReviewsWrapper reviews={modalContent} />
                 ) : (
                   <ListWrapper
                     setModalContent={setModalContent}
@@ -69,7 +70,7 @@ export function DefaultProfile(props) {
         setModalContent={setModalContent}
         modalType={modalType}
       />
-      <div className="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
+      <div className="relative max-w-md mx-auto md:max-w-2xl min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-32">
         <div className="px-6">
           <div className="flex flex-wrap justify-center">
             <div className="w-full flex justify-center">
@@ -107,7 +108,7 @@ export function DefaultProfile(props) {
                   <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
                     {profile.followers.length}
                   </span>
-                  <span className="text-sm text-slate-400">Seguidores</span>
+                  <span className="text-sm text-slate-400">Followers</span>
                 </div>
                 <div
                   className="p-3 text-center hover:cursor-pointer"
@@ -119,7 +120,7 @@ export function DefaultProfile(props) {
                   <span className="text-xl font-bold block uppercase tracking-wide text-slate-700">
                     {profile.following.length}
                   </span>
-                  <span className="text-sm text-slate-400">Seguindo</span>
+                  <span className="text-sm text-slate-400">Following</span>
                 </div>
               </div>
             </div>
@@ -138,9 +139,15 @@ export function DefaultProfile(props) {
             <div className="flex flex-wrap justify-center">
               <div className="w-full px-4">
                 <p className="font-light leading-relaxed text-slate-600 mb-4">
-                  An artist of considerable range, Mike is the name taken by
-                  Melbourne-raised, Brooklyn-based Nick Murphy writes, performs
-                  and records all of his own music, giving it a warm.
+                  Welcome to {profile.name}'s profile! Dive into the world of
+                  football with {profile.name} and discover their latest
+                  reviews, insights, and experiences. Explore their football
+                  journey, check out all the reviews they've shared, and connect
+                  with other enthusiasts in our vibrant community. See who's
+                  cheering alongside them by exploring their followers and
+                  discover the fascinating football stories they're following.
+                  Join {profile.name} in celebrating the beautiful game and be a
+                  part of the passionate football community!
                 </p>
               </div>
             </div>
@@ -172,13 +179,13 @@ export function Profile(props) {
             <a
               onClick={() => followProfile()}
               className="font-normal text-red-700 hover:text-red-400 hover:cursor-pointer"
-              children="Deixar de Seguir"
+              children="Remove following"
             />
           ) : (
             <a
               onClick={() => followProfile()}
               className="font-normal text-slate-700 hover:text-slate-400 hover:cursor-pointer"
-              children="Seguir"
+              children="Sign out"
             />
           )}
         </>

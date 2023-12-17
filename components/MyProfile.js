@@ -11,7 +11,7 @@ export default function MyProfile(props) {
           <a
             onClick={signOut}
             className="font-normal text-red-700 hover:text-red-400 hover:cursor-pointer"
-            children="Sair"
+            children="Sign out"
           />
         </>
       }

@@ -79,7 +79,7 @@ export default function LiveScores(props) {
           </div>
         ) : (
           <div className="w-5/6 mx-auto bg-gray-100 rounded-2xl bg-opacity-70 py-6">
-            <h1>Não foi encontrada nenhuma partida nessa data :(</h1>
+            <h1>No match found on this date :(</h1>
           </div>
         )}
       </div>

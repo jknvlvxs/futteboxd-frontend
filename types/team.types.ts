@@ -7,4 +7,4 @@ export type Team = {
 };
 
 export const defaultLogo =
-  "https://seeklogo.com/images/S/soccer-logo-0CD47E68DD-seeklogo.com.png";
+  "https://icons.veryicon.com/png/o/miscellaneous/8atour/question-mark-17.png";

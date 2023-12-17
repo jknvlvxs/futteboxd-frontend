@@ -1,7 +1,4 @@
-import { useRouter } from "next/router";
-
 export default function LeagueScores(props) {
-  const router = useRouter();
   const { league } = props;
 
   return (
@@ -84,9 +81,7 @@ export default function LeagueScores(props) {
           </div>
         ) : (
           <div className="w-5/6 mx-auto bg-gray-100 rounded-2xl bg-opacity-70 py-6">
-            <h1>
-              Não foi encontrada nenhuma partida para esta liga na temporada :(
-            </h1>
+            <h1>No matches found for this league in the season :(</h1>
           </div>
         )}
       </div>
