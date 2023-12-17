@@ -1,8 +1,6 @@
 export default function LeagueScores(props) {
   const { league = null } = props;
 
-  if (!league) return;
-
   return (
     <section>
       <div className="max-w-7xl mx-auto w-full">
