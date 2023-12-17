@@ -1,8 +1,93 @@
-const Tweet = ({ name, position, text, photoLink, tweetLink }) => {
+const Stars = ({ rating, size }) => {
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  return (
+    <div className="flex items-center align-middle justify-center">
+      <svg
+        className={classNames(
+          rating >= 1 ? "text-yellow-300" : "text-gray-500",
+          size || "w-4 h-4 md:ml-2"
+        )}
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 22 20"
+      >
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+      </svg>
+      <svg
+        className={classNames(
+          rating >= 2 ? "text-yellow-300" : "text-gray-500",
+          size || "w-4 h-4"
+        )}
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 22 20"
+      >
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+      </svg>
+      <svg
+        className={classNames(
+          rating >= 3 ? "text-yellow-300" : "text-gray-500",
+          size || "w-4 h-4"
+        )}
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 22 20"
+      >
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+      </svg>
+      <svg
+        className={classNames(
+          rating >= 4 ? "text-yellow-300" : "text-gray-500",
+          size || "w-4 h-4"
+        )}
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 22 20"
+      >
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+      </svg>
+      <svg
+        className={classNames(
+          rating == 5 ? "text-yellow-300" : "text-gray-500",
+          size || "w-4 h-4"
+        )}
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 22 20"
+      >
+        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+      </svg>
+      {!size && (
+        <>
+          <p
+            className="ml-1 text-sm font-medium text-gray-500 dark:text-gray-400"
+            children={rating}
+          />
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            /
+          </p>
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            5
+          </p>
+        </>
+      )}
+    </div>
+  );
+};
+
+const Review = ({ name, position, text, photoLink, rating, favorite }) => {
   return (
     <div className="relative group">
       <div className="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200" />
-      <a href={tweetLink} className="cursor-pointer">
+      <a className="cursor-pointer">
         <div className="relative p-6 space-y-6 leading-none rounded-lg bg-slate-800 ring-1 ring-gray-900/5 highlight">
           <div className="flex items-center space-x-4">
             <img
@@ -11,18 +96,43 @@ const Tweet = ({ name, position, text, photoLink, tweetLink }) => {
               alt={name}
             />
             <div>
-              <h3 className="text-lg font-semibold text-white">{name}</h3>
-              <p className="text-gray-500 text-md">{position}</p>
+              <div className="flex flex-col md:flex-row">
+                <h3 className="text-lg font-semibold text-white">{name}</h3>
+                <Stars rating={rating} />
+              </div>
+              <p className="text-gray-500 text-md mt-1">{position}</p>
             </div>
           </div>
           <p className="leading-normal text-gray-300 text-md">{text}</p>
+          {/* <p className="leading-normal text-gray-600 text-md">
+            {favorite && "Marked this match as favortite"}
+          </p> */}
         </div>
       </a>
     </div>
   );
 };
 
-export default function Testimonies() {
+export default function Testimonies(props) {
+  const { reviews = [] } = props;
+
+  const divideArray = (arr) => {
+    const result = [[], [], []];
+
+    for (let i = 0; i < arr.length; i++) result[i % 3].push(arr[i]);
+
+    return result;
+  };
+
+  const dividedArrays = divideArray(reviews);
+
+  const part1 = dividedArrays[0];
+  const part2 = dividedArrays[1];
+  const part3 = dividedArrays[2];
+
+  const media = reviews.reduce((acc, review) => acc + +review.rating, 0);
+  const average = (media / reviews.length).toFixed(2);
+
   return (
     <section id="testimonies" className="py-20 bg-slate-900 rounded-md">
       <div className="max-w-6xl mx-8 md:mx-10 lg:mx-20 xl:mx-auto">
@@ -32,7 +142,7 @@ export default function Testimonies() {
               Words from Others
             </div>
             <h1 className="mb-5 text-3xl font-semibold text-white md:text-center md:text-5xl">
-              It's not just us.
+              <Stars rating={average} size="w-10 h-10" />
             </h1>
             <p className="text-xl text-gray-100 md:text-center md:text-2xl">
               Here's what others have to say about us.
@@ -41,126 +151,46 @@ export default function Testimonies() {
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           <ul className="space-y-8">
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Kanye West"
-                position="Rapper & Entrepreneur"
-                text="Find God."
-                photoLink="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
-                tweetLink="https://twitter.com/kanyewest"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Tim Cook"
-                position="CEO of Apple"
-                text="Diam quis enim lobortis scelerisque fermentum
-                      dui faucibus in ornare. Donec pretium vulputate
-                      sapien nec sagittis aliquam malesuada bibendum."
-                photoLink="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
-                tweetLink="https://twitter.com/tim_cook"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Kanye West"
-                position="Rapper & Entrepreneur"
-                text="Find God."
-                photoLink="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
-                tweetLink="https://twitter.com/kanyewest"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Tim Cook"
-                position="CEO of Apple"
-                text="Diam quis enim lobortis scelerisque fermentum
-                      dui faucibus in ornare. Donec pretium vulputate
-                      sapien nec sagittis aliquam malesuada bibendum."
-                photoLink="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
-                tweetLink="https://twitter.com/tim_cook"
-              />
-            </li>
+            {part1.map((review) => (
+              <li className="text-sm leading-6">
+                <Review
+                  name={review.profile.name}
+                  position={review.profile.username}
+                  text={review.text}
+                  photoLink={review.profile.avatar}
+                  rating={review.rating}
+                  favorite={review.favorite}
+                />
+              </li>
+            ))}
           </ul>
           <ul className="hidden space-y-8 sm:block">
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Parag Agrawal"
-                position="CEO of Twitter"
-                text="Enim neque volutpat ac tincidunt vitae semper. Mattis aliquam faucibus purus in massa tempor. Neque vitae tempus quam pellentesque nec. Turpis cursus in hac habitasse platea dictumst."
-                photoLink="https://pbs.twimg.com/profile_images/1375285353146327052/y6jeByyD_400x400.jpg"
-                tweetLink="https://twitter.com/paraga"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Tim Cook"
-                position="CEO of Apple"
-                text="Diam quis enim lobortis scelerisque fermentum
-                      dui faucibus in ornare. Donec pretium vulputate
-                      sapien nec sagittis aliquam malesuada bibendum."
-                photoLink="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
-                tweetLink="https://twitter.com/tim_cook"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Parag Agrawal"
-                position="CEO of Twitter"
-                text="Enim neque volutpat ac tincidunt vitae semper. Mattis aliquam faucibus purus in massa tempor. Neque vitae tempus quam pellentesque nec. Turpis cursus in hac habitasse platea dictumst."
-                photoLink="https://pbs.twimg.com/profile_images/1375285353146327052/y6jeByyD_400x400.jpg"
-                tweetLink="https://twitter.com/paraga"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Tim Cook"
-                position="CEO of Apple"
-                text="Diam quis enim lobortis scelerisque fermentum
-                      dui faucibus in ornare. Donec pretium vulputate
-                      sapien nec sagittis aliquam malesuada bibendum."
-                photoLink="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
-                tweetLink="https://twitter.com/tim_cook"
-              />
-            </li>
+            {part2.map((review) => (
+              <li className="text-sm leading-6">
+                <Review
+                  name={review.profile.name}
+                  position={review.profile.username}
+                  text={review.text}
+                  photoLink={review.profile.avatar}
+                  rating={review.rating}
+                  favorite={review.favorite}
+                />
+              </li>
+            ))}
           </ul>
           <ul className="hidden space-y-8 lg:block">
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Satya Nadella"
-                position="CEO of Microsoft"
-                text="Tortor dignissim convallis aenean et tortor at. At ultrices mi tempus imperdiet nulla malesuada. Id cursus metus aliquam eleifend mi. Quis ipsum suspendisse ultrices gravida dictum fusce ut."
-                photoLink="https://pbs.twimg.com/profile_images/1221837516816306177/_Ld4un5A_400x400.jpg"
-                tweetLink="https://twitter.com/satyanadella"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Dan Schulman"
-                position="CEO of PayPal"
-                text="Quam pellentesque nec nam aliquam sem et tortor consequat id. Enim sit amet venenatis urna cursus."
-                photoLink="https://pbs.twimg.com/profile_images/516916920482672641/3jCeLgFb_400x400.jpeg"
-                tweetLink="https://twitter.com/dan_schulman"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Satya Nadella"
-                position="CEO of Microsoft"
-                text="Tortor dignissim convallis aenean et tortor at. At ultrices mi tempus imperdiet nulla malesuada. Id cursus metus aliquam eleifend mi. Quis ipsum suspendisse ultrices gravida dictum fusce ut."
-                photoLink="https://pbs.twimg.com/profile_images/1221837516816306177/_Ld4un5A_400x400.jpg"
-                tweetLink="https://twitter.com/satyanadella"
-              />
-            </li>
-            <li className="text-sm leading-6">
-              <Tweet
-                name="Dan Schulman"
-                position="CEO of PayPal"
-                text="Quam pellentesque nec nam aliquam sem et tortor consequat id. Enim sit amet venenatis urna cursus."
-                photoLink="https://pbs.twimg.com/profile_images/516916920482672641/3jCeLgFb_400x400.jpeg"
-                tweetLink="https://twitter.com/dan_schulman"
-              />
-            </li>
+            {part3.map((review) => (
+              <li className="text-sm leading-6">
+                <Review
+                  name={review.profile.name}
+                  position={review.profile.username}
+                  text={review.text}
+                  photoLink={review.profile.avatar}
+                  rating={review.rating}
+                  favorite={review.favorite}
+                />
+              </li>
+            ))}
           </ul>
         </div>
       </div>
